@@ -96,14 +96,10 @@ Detailed per-class performance analysis for all 15 models, organized by architec
 <tr>
 <td width="50%">
 
-**Mamba Base (93.32%)**
-
 ![Mamba Base](figures/confusion_matrices/cm_mamba_base.png)
 
 </td>
 <td width="50%">
-
-**Mamba Small (93.23%)**
 
 ![Mamba Small](figures/confusion_matrices/cm_mamba_small.png)
 
@@ -117,7 +113,6 @@ Detailed per-class performance analysis for all 15 models, organized by architec
 <tr>
 <td width="33%">
 
-**ResNet8 (93.20%)**
 
 ![ResNet8](figures/confusion_matrices/cm_resnet8.png)
 
@@ -175,7 +170,7 @@ Detailed per-class performance analysis for all 15 models, organized by architec
 
 **EfficientNet B1**
 
-![EfficientNet B1](figures/confusion_matrices/__cm_efficientnet_b1.png)
+![EfficientNet B1](figures/confusion_matrices/cm_efficientnet_b1.png)
 
 </td>
 <td width="33%">
