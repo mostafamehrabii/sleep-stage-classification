@@ -35,9 +35,69 @@ Automatic sleep stage classification from EEG signals is critical for diagnosing
 │   ├── mamba.py              # Mamba Small & Base (State Space Models)
 │   ├── traditional_ml.py     # Random Forest, XGBoost, LightGBM
 │   └── efficient_nets.py     # EfficientNet B1, MobileNetV4, ConvNeXt
-├── data/                      # Data preprocessing scripts & instructions
 ├── results/                   # Output directory for trained models
-├── docs/                      # Documentation & paper
-├── requirements.txt           # Python dependencies
 └── README.md                  # This file
+```
+
+
+## Model Architectures
+
+### State Space Models (Mamba)
+- **Mamba Small:** 410K parameters
+- **Mamba Base:** 703K parameters
+- Linear complexity O(n) for sequence modeling
+- Selective state space mechanism
+
+### Residual CNNs
+- **ResNet8:** 2.18M parameters (best stability)
+- **ResNet12:** 3.40M parameters
+- **ResNet16:** 4.62M parameters
+- Skip connections + batch normalization
+
+### Hybrid Models
+- ResNet8/12/16 + BiLSTM layers
+- Combines spatial and temporal feature extraction
+
+### Efficient CNNs
+- **EfficientNet B1:** 7.00M parameters
+- **MobileNetV4 Small:** 2.07M parameters  
+- **ConvNeXt Femto:** 4.54M parameters
+
+### Traditional ML
+- Random Forest, Extra Trees, XGBoost, LightGBM
+- 154 engineered time/frequency domain features
+
+---
+
+## Evaluation Protocol
+
+**Cross-Validation:** Leave-One-Subject-Out (LOSO)  
+**Subjects:** 20  
+**Metrics:** Accuracy, Precision, Recall, F1-Score, Cohen's Kappa  
+**Significance:** Subject-independent generalization reflects real clinical deployment
+
+---
+
+## Key Findings
+
+1. **Simpler architectures often outperform complex ones:** ResNet8 beats ResNet12/16
+2. **Adding recurrence doesn't always help:** BiLSTM layers increased cost without gains
+3. **State space models are competitive:** Mamba achieves highest accuracy with linear complexity
+4. **Traditional ML remains viable:** 90-91% accuracy with minimal compute
+5. **Trade-offs matter:** Choose based on deployment constraints (GPU, edge, CPU-only)
+
+---
+
+## Citation
+
+If you use this code or findings in your research, please cite:
+
+```bibtex
+@inproceedings{mehrabi2025mamba,
+  title={Mamba Meets Sleep: Do State Space Models Outperform CNNs for EEG Classification?},
+  author={Mehrabi, Mostafa and Malek, Hamed},
+  booktitle={IEEE Conference Proceedings},
+  year={2025},
+  organization={IEEE}
+}
 ```
