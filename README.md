@@ -2,17 +2,23 @@
 
 Automatic sleep stage classification from EEG signals is critical for diagnosing sleep disorders, yet most studies evaluate architectures in isolation. We present a systematic evaluation of 15 models across five families: traditional machine learning, residual CNNs, hybrid ResNet-BiLSTM, efficient CNNs, and state space models. Using Sleep-EDF with leave-one-subject-out cross-validation on 20 subjects, we assessed subject-independent generalization. **Mamba Base achieved the highest accuracy (93.32% ± 3.01%)** and recall (87.11%), while **ResNet8 provided comparable accuracy (93.20%) with lowest variance (2.47%)**. Our comprehensive comparison reveals clear trade-offs between accuracy, stability, efficiency, and deployment constraints.
 
-# Key Results
+## Key Results
 
 | Model | Accuracy (%) | Std Dev (%) | Parameters | Cohen's κ |
 |-------|--------------|-------------|------------|-----------|
-| **Mamba Base** | **93.32** | 3.01 | 703K | 0.8489 |
-| **ResNet8** | **93.20** | **2.47** | 2.18M | 0.8485 |
-| ResNet8-BiLSTM | 92.83 | 3.14 | 2.82M | 0.8428 |
-| ResNet12 | 92.63 | 3.87 | 3.40M | 0.8401 |
-| Mamba Small | 92.52 | 3.04 | 410K | 0.8389 |
+| **Mamba Base** | **93.32** | 3.01 | 703K | 0.864 |
+| **Mamba Small** | **93.23** | 4.81 | 132K | 0.864 |
+| **ResNet8** | **93.20** | **2.47** | 2.18M | 0.860 |
+| ResNet8-BiLSTM | 92.97 | 3.17 | 2.83M | 0.855 |
+| ResNet16 | 92.91 | 2.80 | 4.63M | 0.852 |
 
 *Full results for all 15 models available in the paper.*
+
+![Accuracy Comparison](figures/fig1_accuracy_comparison.png)
+*Figure 1: Performance comparison across all 15 models*
+
+![Stability Analysis](figures/fig2_stability_analysis.png)
+*Figure 2: Accuracy vs variance trade-off analysis*
 
 ---
 
@@ -29,19 +35,18 @@ Automatic sleep stage classification from EEG signals is critical for diagnosing
 └── README.md                  # This file
 ```
 
-
 ## Model Architectures
 
 ### State Space Models (Mamba)
-- **Mamba Small:** 410K parameters
+- **Mamba Small:** 132K parameters
 - **Mamba Base:** 703K parameters
 - Linear complexity O(n) for sequence modeling
 - Selective state space mechanism
 
 ### Residual CNNs
 - **ResNet8:** 2.18M parameters (best stability)
-- **ResNet12:** 3.40M parameters
-- **ResNet16:** 4.62M parameters
+- **ResNet12:** 3.41M parameters
+- **ResNet16:** 4.63M parameters
 - Skip connections + batch normalization
 
 ### Hybrid Models
@@ -50,12 +55,12 @@ Automatic sleep stage classification from EEG signals is critical for diagnosing
 
 ### Efficient CNNs
 - **EfficientNet B1:** 7.00M parameters
-- **MobileNetV4 Small:** 2.07M parameters  
+- **MobileNetV4 Small:** 296K parameters  
 - **ConvNeXt Femto:** 4.54M parameters
 
 ### Traditional ML
 - Random Forest, Extra Trees, XGBoost, LightGBM
-- 154 engineered time/frequency domain features
+- 47 engineered time/frequency domain features
 
 ---
 
@@ -90,3 +95,11 @@ If you use this code or findings in your research, please cite:
   url={https://github.com/mostafamehrabii/sleep-stage-classification}
 }
 ```
+
+## 📧 Contact
+
+Questions? Open an issue or contact mmehrabi.mostafa@gmail.com
+
+---
+
+⭐ **Star this repo if you find it useful!**
