@@ -23,7 +23,6 @@ Automatic sleep stage classification from EEG signals is critical for diagnosing
 ---
 
 ## Repository Structure
-
 ```
 ├── models/                    # Model implementations
 │   ├── resnet.py             # ResNet variants (8/12/16 layers)
@@ -32,6 +31,10 @@ Automatic sleep stage classification from EEG signals is critical for diagnosing
 │   ├── traditional_ml.py     # Random Forest, XGBoost, LightGBM
 │   └── efficient_nets.py     # EfficientNet B1, MobileNetV4, ConvNeXt
 ├── results/                   # Output directory for trained models
+├── figures/
+│   ├── confusion_matrices/    # Per-model confusion matrices
+│   ├── fig1_accuracy_comparison.png
+│   └── fig2_stability_analysis.png
 └── README.md                  # This file
 ```
 
@@ -83,10 +86,164 @@ Automatic sleep stage classification from EEG signals is critical for diagnosing
 
 ---
 
+## Confusion Matrices
+
+Detailed per-class performance analysis for all 15 models, organized by architecture family.
+
+### State Space Models (Top Performers)
+
+<table>
+<tr>
+<td width="50%">
+
+**Mamba Base (93.32%)**
+
+![Mamba Base](figures/confusion_matrices/cm_mamba_base.png)
+
+</td>
+<td width="50%">
+
+**Mamba Small (93.23%)**
+
+![Mamba Small](figures/confusion_matrices/cm_mamba_small.png)
+
+</td>
+</tr>
+</table>
+
+### Residual CNNs
+
+<table>
+<tr>
+<td width="33%">
+
+**ResNet8 (93.20%)**
+
+![ResNet8](figures/confusion_matrices/cm_resnet8.png)
+
+</td>
+<td width="33%">
+
+**ResNet12**
+
+![ResNet12](figures/confusion_matrices/cm_resnet12.png)
+
+</td>
+<td width="33%">
+
+**ResNet16**
+
+![ResNet16](figures/confusion_matrices/cm_resnet16.png)
+
+</td>
+</tr>
+</table>
+
+### Hybrid ResNet-BiLSTM Models
+
+<table>
+<tr>
+<td width="33%">
+
+**ResNet8-BiLSTM**
+
+![ResNet8-BiLSTM](figures/confusion_matrices/cm_resnet8_bilstm.png)
+
+</td>
+<td width="33%">
+
+**ResNet12-BiLSTM**
+
+![ResNet12-BiLSTM](figures/confusion_matrices/cm_resnet12_bilstm.png)
+
+</td>
+<td width="33%">
+
+**ResNet16-BiLSTM**
+
+![ResNet16-BiLSTM](figures/confusion_matrices/cm_resnet16_bilstm.png)
+
+</td>
+</tr>
+</table>
+
+### Efficient CNNs
+
+<table>
+<tr>
+<td width="33%">
+
+**EfficientNet B1**
+
+![EfficientNet B1](figures/confusion_matrices/__cm_efficientnet_b1.png)
+
+</td>
+<td width="33%">
+
+**MobileNetV4 Small**
+
+![MobileNetV4 Small](figures/confusion_matrices/cm_mobilenetv4_small.png)
+
+</td>
+<td width="33%">
+
+**ConvNeXt Femto**
+
+![ConvNeXt Femto](figures/confusion_matrices/cm_convnext_femto.png)
+
+</td>
+</tr>
+</table>
+
+### Traditional Machine Learning
+
+<table>
+<tr>
+<td width="50%">
+
+**Random Forest**
+
+![Random Forest](figures/confusion_matrices/cm_randomforest.png)
+
+</td>
+<td width="50%">
+
+**Extra Trees**
+
+![Extra Trees](figures/confusion_matrices/cm_extratrees.png)
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+**XGBoost**
+
+![XGBoost](figures/confusion_matrices/cm_xgboost.png)
+
+</td>
+<td width="50%">
+
+**LightGBM**
+
+![LightGBM](figures/confusion_matrices/cm_lightgbm.png)
+
+</td>
+</tr>
+</table>
+
+**Key Observations:**
+- All models show strong diagonal patterns indicating good overall classification
+- W (wake) and REM stages are generally well-separated across all architectures
+- N1 (stage 1 sleep) remains the most challenging class, often confused with N2
+- State space models (Mamba) and ResNet8 show the most balanced per-class performance
+- Traditional ML models achieve competitive results despite simpler feature representations
+
+---
+
 ## Citation
 
 If you use this code or findings in your research, please cite:
-
 ```bibtex
 @software{mehrabi2025mamba,
   title={Mamba Meets Sleep: Do State Space Models Outperform CNNs for EEG Classification?},
