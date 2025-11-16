@@ -1,15 +1,5 @@
 # Mamba Meets Sleep: Do State Space Models Outperform CNNs for EEG Classification?
 
-[![IEEE](https://img.shields.io/badge/IEEE-Conference-blue.svg)](https://ieeexplore.ieee.org)
-[![Python](https://img.shields.io/badge/Python-3.8+-green.svg)](https://www.python.org/)
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg)](https://pytorch.org/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-
-Official implementation of **"Mamba Meets Sleep: Do State Space Models Outperform CNNs for EEG Classification?"**
-
-**Authors:** Mostafa Mehrabi, Hamed Malek  
-**Affiliation:** Faculty of Computer Science and Computer Engineering, Shahid Beheshti University, Tehran, Iran
----
 Automatic sleep stage classification from EEG signals is critical for diagnosing sleep disorders, yet most studies evaluate architectures in isolation. We present a systematic evaluation of 15 models across five families: traditional machine learning, residual CNNs, hybrid ResNet-BiLSTM, efficient CNNs, and state space models. Using Sleep-EDF with leave-one-subject-out cross-validation on 20 subjects, we assessed subject-independent generalization. **Mamba Base achieved the highest accuracy (93.32% ± 3.01%)** and recall (87.11%), while **ResNet8 provided comparable accuracy (93.20%) with lowest variance (2.47%)**. Our comprehensive comparison reveals clear trade-offs between accuracy, stability, efficiency, and deployment constraints.
 
 # Key Results
@@ -93,11 +83,10 @@ Automatic sleep stage classification from EEG signals is critical for diagnosing
 If you use this code or findings in your research, please cite:
 
 ```bibtex
-@inproceedings{mehrabi2025mamba,
+@software{mehrabi2025mamba,
   title={Mamba Meets Sleep: Do State Space Models Outperform CNNs for EEG Classification?},
-  author={Mehrabi, Mostafa and Malek, Hamed},
-  booktitle={IEEE Conference Proceedings},
+  author={Mostafa Mehrabi},
   year={2025},
-  organization={IEEE}
+  url={https://github.com/mostafamehrabii/sleep-stage-classification}
 }
 ```
