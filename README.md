@@ -95,11 +95,12 @@ Detailed per-class performance analysis for all 15 models, organized by architec
 <table>
 <tr>
 <td width="50%">
-
+**Mamba Base**
 ![Mamba Base](figures/confusion_matrices/cm_mamba_base.png)
 
 </td>
 <td width="50%">
+**Mamba Small**
 
 ![Mamba Small](figures/confusion_matrices/cm_mamba_small.png)
 
@@ -112,7 +113,7 @@ Detailed per-class performance analysis for all 15 models, organized by architec
 <table>
 <tr>
 <td width="33%">
-
+**ResNet8**
 
 ![ResNet8](figures/confusion_matrices/cm_resnet8.png)
 
